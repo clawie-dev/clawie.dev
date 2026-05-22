@@ -1,0 +1,25 @@
+# Next.js
+.next/
+out/
+build/
+dist/
+
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Env
+.env*.local
+.env
+
+# Misc
+.DS_Store
+*.pem
+.vercel
+.idea/
+.vscode/
+
+# Build-time content fetches (regenerated)
+content/specs/
+content/docs/
