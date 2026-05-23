@@ -2,7 +2,7 @@
 
 Landing page + documentation site for **Clawie, the Autonomous Software Agency Framework**.
 
-NextJS, frontend-only. Pulls content from sibling repos at build time:
+Next.js (App Router) + React, frontend-only, static-export friendly. Pulls content from sibling repos at build time:
 
 - [`clawie-dev/docs`](https://github.com/clawie-dev/docs) → prose documentation
 - [`clawie-dev/specs`](https://github.com/clawie-dev/specs) → formal specifications
