@@ -10,32 +10,36 @@ Most "agent frameworks" mash four concerns into one — runtime, control plane, 
 
 Clawie keeps the four layers explicitly separate, swappable, and observable. Every layer earns its keep.
 
-## What v0.1.0 ships
+## What v1.0 ships
 
-The smallest possible vertical slice: a durable task lifecycle, audited via hash-chained immutable log, exposed via CLI and REST. No LLMs, no Docker, no Outcall yet — those land in later phases. v0.1.0 is the foundation everything else extends.
+Every intent runs in an ephemeral Docker container. LLM calls (Anthropic / OpenAI) cost-track to a ledger. A default-deny policy gates sensitive intents through an approval queue. A web dashboard reads the same state as the CLI and REST API. On Linux, [Outcall](https://github.com/outcall-dev/root) adds host-level egress isolation per team. Every state transition lands in a hash-chained audit log you can `VACUUM INTO` and verify.
 
 ```bash
 node ace task:run --intent echo --payload '"world"'
 # task d3f8... → completed
 #   result: {"message":"hello: world"}
+
+ANTHROPIC_API_KEY=… node ace task:run --intent chat --payload '{"prompt":"hi"}'
+# container spawned, LLM called, cost recorded, audit row chained
 ```
 
-## Roadmap
+## Phases shipped
 
-| Version | Capability |
+| Tag | Capability |
 |---|---|
-| v0.1.0 | Durable task lifecycle |
-| v0.2.0 | Tasks run inside ephemeral Docker containers |
-| v0.3.0 | Real LLM via model router |
-| v0.4.0 | Policy engine + approval queue |
-| v0.5.0 | Outcall sidecar (egress isolation) |
-| v0.6.0 | Dashboard MVP |
-| v0.7.0 | Agent files + self-modification PRs |
-| v0.8.0 | Teams + multi-agent flows |
-| v0.9.0 | Scheduler + dual-mode crons |
-| v1.0.0 | Full software agency pipeline, Linear/Jira drivers, backup, upgrades, webhooks, marketplace |
+| v0.1.0 | Durable task lifecycle (state machine + hash-chained audit) |
+| v0.2.1 | Container execution — every intent runs in `clawie/agent-runtime` |
+| v0.3.0 | Real LLM intent (Anthropic / OpenAI) with cost ledger |
+| v0.4.0 | Default-deny policy + approval queue |
+| v0.5.2 | Pluggable egress (`null` default, Outcall provider for Linux) |
+| v0.6.1 | Dashboard at `/dashboard` — Tasks / Approvals / Audit / Egress / Self-Mods |
+| v0.7.1 | Agent files (SOUL.md / AGENTS.yaml / TOOLS.yaml) + `agent.self_mod` intent |
+| v0.8.1 | Teams + multi-agent (per-team Outcall network) |
+| v0.9.0 | Scheduler + crons (`scheduler:tick` host-cron entry-point) |
+| v1.0.0 | Ship-grade: backup/verify, HMAC-signed outbound webhooks, full docs |
 
-See [PHASES.md](https://github.com/clawie-dev/specs/blob/main/PHASES.md).
+See [PHASES.md](https://github.com/clawie-dev/specs/blob/main/PHASES.md) for the
+full implementation history.
 
 ## Repositories
 
