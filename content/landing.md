@@ -50,9 +50,9 @@ full implementation history.
 | [specs](https://github.com/clawie-dev/specs) | End-goal architecture + 31 feature specs |
 | [docs](https://github.com/clawie-dev/docs) | User-facing documentation |
 | [agent-runtime](https://github.com/clawie-dev/agent-runtime) | Docker base image (Phase 2+) |
-| [schemas](https://github.com/clawie-dev/schemas) | JSON Schemas for every config |
+| [schemas](https://github.com/clawie-dev/schemas) | JSON Schemas for every config (design contract only; spec 018, lands in v1.x) |
 | [default-agency](https://github.com/clawie-dev/default-agency) | 9-agent starter pack (design contract only; lands in v1.x) |
-| [sdk-typescript](https://github.com/clawie-dev/sdk-typescript) | Typed REST/WS SDK |
+| [sdk-typescript](https://github.com/clawie-dev/sdk-typescript) | Typed REST/WS SDK (design contract only; spec 023, lands in v1.x) |
 | [outcall-presets](https://github.com/clawie-dev/outcall-presets) | Egress rule packs |
 | [market.clawie.dev](https://github.com/clawie-dev/market.clawie.dev) | Plugin marketplace (design contract only; spec 024, lands in v1.x) |
 | [.github](https://github.com/clawie-dev/.github) | Org profile |
