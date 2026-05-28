@@ -12,7 +12,7 @@ Clawie keeps the four layers explicitly separate, swappable, and observable. Eve
 
 ## What v1.0 ships
 
-Every intent runs in an ephemeral Docker container. LLM calls (Anthropic / OpenAI) cost-track to a ledger. A default-deny policy gates sensitive intents through an approval queue. A web dashboard reads the same state as the CLI and REST API. On Linux, [Outcall](https://github.com/outcall-dev/root) adds host-level egress isolation per team. Every state transition lands in a hash-chained audit log you can `VACUUM INTO` and verify.
+Every intent runs in an ephemeral Docker container. LLM calls (Anthropic / OpenAI) cost-track to a ledger. A default-deny policy gates sensitive intents through an approval queue. A web dashboard reads the same state as the CLI and REST API. On Linux, [Outcall](https://github.com/outcall-dev/outcall) adds host-level egress isolation per team. Every state transition lands in a hash-chained audit log you can `VACUUM INTO` and verify.
 
 ```bash
 node ace task:run --intent echo --payload '"world"'
